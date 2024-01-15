@@ -1,0 +1,82 @@
+#include <iostream>
+#include <Windows.h>
+#include <ctime>
+using namespace std;
+
+int main()
+{
+	chacha:
+    setlocale(0, "");
+	int choise = 0;
+	Sleep(1200);
+	system("cls");
+	cout << "\x1b[00mДобро пожаловать в игру \x1b[93m'Угадайка'\n";
+	cout << "\x1b[92m[1] Начать игру\n";
+	cout << "\x1b[91m[2] Выйти\x1b[00m\n";
+	cin >> choise;
+	srand(time(0));
+	int random1 = 1 + rand() % 10;
+	int random2 = 1 + rand() % 10;
+	int random3 = 1 + rand() % 10;
+	
+
+	int truedigit = 0;
+	int alldigit = 3;
+	int trydigit = 5;;
+	int seek;
+	if (choise == 2) {
+		return 0;
+	}
+	else if (choise == 1) 
+	{
+		while (trydigit > 0 && truedigit < 3) 
+		{
+			Sleep(1200);
+			system("cls");
+			label:
+			cout << "\x1b[94m[+] Угаданных чисел: " << truedigit << "/" << alldigit;
+			cout << "\n\x1b[94m[+] Попыток: " << trydigit << "\n\n";
+			cout << "\n[>] Угадать число: ";
+			cin >> seek;
+			if (seek < 0 || seek == 0 || seek > 10) 
+			{
+				cout << "\x1b[91mОшибка, введите число в правильном диапазоне\x1b[00m";
+				goto label;
+			}
+			else if (seek == random1) 
+			{
+				cout << "\n\x1b[92m[+] Вы угадали число!!!\x1b[00m\n";
+				random1 = 100;
+				++truedigit;
+			}
+			else if (seek == random2)
+			{
+				cout << "\n\x1b[92m[+] Вы угадали число!!!\x1b[00m\n";
+				random2 = 100;
+				++truedigit;
+			}
+			else if (seek == random3) 
+			{
+				cout << "\n\x1b[92m[+] Вы угадали число!!!\x1b[00m\n";
+				random3 = 100;
+				++truedigit;
+			}
+			else 
+			{
+				cout << "\n\x1b[91m[-] Вы не угадали число!!!\x1b[00m\n";
+			}
+			trydigit--;
+		}
+			if (truedigit < 3) 
+			{
+				cout << "\x1b[91mХА-ХА-ХА, ВЫ ПРОИГРАЛИ)\n";
+				goto chacha;
+			}
+			else if (truedigit == 3) 
+			{
+				cout << "\x1b[92mну вот... я проиграл, а вы молодцы!\n";
+				goto chacha;
+			}
+	}	
+	int _; cin >> _;
+}
